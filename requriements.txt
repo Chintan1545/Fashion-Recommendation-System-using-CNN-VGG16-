@@ -1,7 +1,5 @@
-shap
 pandas
 matplotlib
-seaborn
 numpy
 scikit-learn
 ipykernel
@@ -10,10 +8,6 @@ tensorflow
 Pillow
 opencv-python
 scipy
-torch
-torchvision
-ftfy
-regex
-tqdm
-clip-anytorch
+
+
 
