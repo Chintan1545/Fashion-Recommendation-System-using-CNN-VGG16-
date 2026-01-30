@@ -10,16 +10,16 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import Model
 from scipy.spatial.distance import cosine
 
-# -------------------------------
+
 # CONFIG
-# -------------------------------
+
 st.set_page_config(page_title="Fashion Recommendation", layout="wide")
 
 IMAGE_DIR = r"E:\projects\Machine Learning Project\Supervised Learning Projects\women fashion"
 
-# -------------------------------
+
 # LOAD MODEL (CACHE)
-# -------------------------------
+
 @st.cache_resource
 def load_model():
     base_model = VGG16(weights="imagenet", include_top=False)
@@ -27,9 +27,9 @@ def load_model():
 
 model = load_model()
 
-# -------------------------------
+
 # IMAGE UTILITIES
-# -------------------------------
+
 def preprocess_image(img):
     img = img.resize((224, 224))
     img_array = np.array(img)
@@ -44,9 +44,9 @@ def extract_features(img):
     return features / np.linalg.norm(features)
 
 
-# -------------------------------
+
 # LOAD DATASET FEATURES (CACHE)
-# -------------------------------
+
 @st.cache_data
 def load_dataset():
     image_paths = [
@@ -64,9 +64,9 @@ def load_dataset():
 
 image_paths, dataset_features = load_dataset()
 
-# -------------------------------
+
 # STREAMLIT UI
-# -------------------------------
+
 st.title("👗 Fashion Recommendation System")
 st.write("Upload a fashion image and get similar recommendations")
 
@@ -96,3 +96,4 @@ if uploaded_file:
     cols = st.columns(top_n)
     for col, idx in zip(cols, top_indices):
         col.image(Image.open(image_paths[idx]), use_column_width=True)
+
